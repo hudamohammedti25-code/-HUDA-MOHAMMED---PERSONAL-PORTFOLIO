@@ -1,0 +1,630 @@
+/* =====================================
+   HUDA MOHAMMED - PERSONAL PORTFOLIO
+   Beige & Brown Theme
+===================================== */
+
+/* 1. Global Settings */
+:root {
+    --cream: #F8F4ED;
+    --beige: #EDE2D3;
+    --light-beige: #F1E9DE;
+    --brown: #80634A;
+    --dark-brown: #49372B;
+    --soft-brown: #B69A7B;
+    --white: #FFFFFF;
+    --text: #49372B;
+    --shadow: 0 8px 25px rgba(73, 55, 43, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    line-height: 1.8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* 2. Navigation Bar */
+.navbar {
+    width: 100%;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(248, 244, 237, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(73, 55, 43, 0.05);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--dark-brown);
+}
+
+.logo span {
+    color: var(--soft-brown);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brown);
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--dark-brown);
+}
+
+.language-btn {
+    border: 1px solid var(--soft-brown);
+    background: transparent;
+    color: var(--dark-brown);
+    padding: 8px 17px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.language-btn:hover {
+    background: var(--dark-brown);
+    color: var(--white);
+}
+
+/* 3. Hero Section */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 90px 10%;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.welcome-text {
+    color: var(--soft-brown);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 5vw, 55px);
+    line-height: 1.3;
+    color: var(--dark-brown);
+    margin-bottom: 12px;
+}
+
+.highlight {
+    display: block;
+    color: var(--brown);
+}
+
+.hero h2 {
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--soft-brown);
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    max-width: 570px;
+    color: #766456;
+    margin-bottom: 20px;
+}
+
+.welcome-quote {
+    max-width: 550px;
+    font-style: italic;
+    color: var(--brown);
+    border-left: 3px solid var(--soft-brown);
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: var(--dark-brown);
+    color: var(--white);
+}
+
+.primary-btn:hover {
+    background: var(--brown);
+    transform: translateY(-3px);
+}
+
+.secondary-btn {
+    border: 1px solid var(--brown);
+    color: var(--brown);
+}
+
+.secondary-btn:hover {
+    background: var(--beige);
+    transform: translateY(-3px);
+}
+
+/* 4. Avatar */
+.hero-image {
+    flex: 0 0 330px;
+    width: 330px;
+    height: 380px;
+    border-radius: 48% 48% 25% 25%;
+    background: var(--beige);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 8px solid var(--white);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 5. General Sections */
+.section {
+    padding: 85px 10%;
+}
+
+.section:nth-child(even) {
+    background: var(--light-beige);
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-heading p {
+    color: var(--soft-brown);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.section-heading h2 {
+    color: var(--dark-brown);
+    font-size: 35px;
+    margin-top: 5px;
+}
+
+.section > p {
+    max-width: 850px;
+    color: #766456;
+    font-size: 16px;
+}
+
+/* 6. Education Cards */
+.info-card {
+    background: var(--white);
+    padding: 25px;
+    margin-bottom: 18px;
+    border-radius: 15px;
+    border-left: 4px solid var(--soft-brown);
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+}
+
+.info-card h3 {
+    color: var(--dark-brown);
+    font-size: 19px;
+}
+
+.info-card p {
+    color: var(--brown);
+}
+
+.info-card span {
+    color: #9A8775;
+    font-size: 13px;
+}
+
+/* 7. Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    background: var(--white);
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    background: var(--beige);
+}
+
+.skill-card h3 {
+    color: var(--dark-brown);
+    font-size: 20px;
+}
+
+.skill-card p {
+    color: var(--brown);
+    font-size: 14px;
+}
+
+/* 8. Projects */
+.project-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--soft-brown);
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card h3 {
+    color: var(--dark-brown);
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: #766456;
+    margin-bottom: 15px;
+}
+
+.project-card span {
+    display: inline-block;
+    background: var(--beige);
+    color: var(--brown);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* 9. Contact */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-list a {
+    background: var(--white);
+    padding: 18px 22px;
+    border-radius: 12px;
+    color: var(--brown);
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+    overflow-wrap: anywhere;
+}
+
+.contact-list a:hover {
+    background: var(--beige);
+    color: var(--dark-brown);
+    transform: translateX(5px);
+}
+
+/* 10. Footer */
+footer {
+    background: var(--dark-brown);
+    color: var(--white);
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 13px;
+}
+
+/* 11. Arabic Direction */
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+body[dir="rtl"] .welcome-quote {
+    border-left: none;
+    border-right: 3px solid var(--soft-brown);
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+body[dir="rtl"] .info-card,
+body[dir="rtl"] .project-card {
+    border-left: none;
+    border-right: 4px solid var(--soft-brown);
+}
+
+body[dir="rtl"] .contact-list a:hover {
+    transform: translateX(-5px);
+}
+
+/* 12. Responsive Design - Tablets */
+@media (max-width: 1000px) {
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 70px 6%;
+    }
+
+    .hero-image {
+        flex-basis: 270px;
+        width: 270px;
+        height: 320px;
+    }
+
+    .section {
+        padding: 70px 7%;
+    }
+}
+
+/* 13. Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: 8px 0;
+        gap: 20px;
+    }
+
+    .nav-links a {
+        white-space: nowrap;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 55px 7%;
+        gap: 35px;
+    }
+
+    .hero-image {
+        flex: none;
+        width: 240px;
+        height: 280px;
+    }
+
+    .hero-description,
+    .welcome-quote {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .welcome-quote {
+        text-align: left;
+    }
+
+    body[dir="rtl"] .welcome-quote {
+        text-align: right;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section {
+        padding: 60px 7%;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+}
+
+/* 14. Small Mobile */
+@media (max-width: 450px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-image {
+        width: 210px;
+        height: 250px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+}
+
+/* ==============================
+   Smooth Animations
+============================== */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hero entrance animation */
+.hero {
+    animation: fadeInUp 1s ease both;
+}
+
+/* Section entrance animation */
+section {
+    animation: fadeInUp 0.8s ease both;
+}
+
+/* Avatar floating effect */
+.avatar,
+.hero img {
+    animation: floatAvatar 4s ease-in-out infinite;
+}
+
+/* Cards hover effect */
+.card,
+.skill-card,
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.skill-card:hover,
+.project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(73, 55, 43, 0.12);
+}
+
+/* Navigation hover effect */
+nav a {
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--soft-brown);
+}
+
+/* Button hover effect */
+button,
+.btn {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+button:hover,
+.btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatAvatar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: var(--brown);
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(73, 55, 43, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background: var(--dark-brown);
+    transform: translateY(-5px);
+}
+
+.back-to-top.show {
+    display: flex;
+}
+
+/* Mobile positioning */
+@media (max-width: 600px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
+}
