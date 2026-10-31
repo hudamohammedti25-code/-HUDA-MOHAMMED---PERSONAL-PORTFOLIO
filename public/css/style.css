@@ -1,25 +1,96 @@
 /* =========================================
    HUDA JAMEEL — PERSONAL JOURNAL
    Editorial • Elegant • Creative
+   Beige • Brown • Sage Green
 ========================================= */
 
-/* 1. Color Palette */
+
+/* 1. COLOR SYSTEM */
 
 :root {
+    color-scheme: light;
+
     --cream: #F8F4ED;
     --ivory: #FFFCF7;
     --beige: #EDE2D3;
     --light-beige: #F1E9DE;
+
     --brown: #80634A;
     --dark-brown: #49372B;
     --soft-brown: #B69A7B;
-    --olive: #8A8966;
+
+    --olive: #7F9585;
+    --sage: #A3B5A0;
+    --deep-green: #647C70;
+
     --white: #FFFFFF;
     --text: #5E4A3D;
     --muted: #958476;
+
+    --page-bg: var(--cream);
+    --card-bg: var(--ivory);
+    --section-bg: var(--light-beige);
+    --heading-color: var(--dark-brown);
+    --body-color: var(--text);
+    --accent-color: var(--deep-green);
+
+    --nav-bg: rgba(248, 244, 237, 0.94);
+    --footer-bg: #49372B;
+    --footer-text: #EDE2D3;
+    --philosophy-bg: #49372B;
+
+    --button-bg: #49372B;
+    --button-text: #FFFFFF;
+    --button-hover: #80634A;
+
     --shadow: 0 12px 35px rgba(73, 55, 43, 0.08);
     --radius: 22px;
 }
+
+
+/* 2. DARK MODE COLORS */
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+
+    --cream: #202B27;
+    --ivory: #293831;
+    --beige: #3B4B40;
+    --light-beige: #26332D;
+
+    --brown: #C3AE94;
+    --dark-brown: #E9E1D5;
+    --soft-brown: #A9B69F;
+
+    --olive: #A3B5A0;
+    --sage: #B8C7B2;
+    --deep-green: #789487;
+
+    --white: #FFFFFF;
+    --text: #E5E0D7;
+    --muted: #B7B4A9;
+
+    --page-bg: #202B27;
+    --card-bg: #293831;
+    --section-bg: #26332D;
+    --heading-color: #E9E1D5;
+    --body-color: #E5E0D7;
+    --accent-color: #A3B5A0;
+
+    --nav-bg: rgba(32, 43, 39, 0.96);
+    --footer-bg: #17231E;
+    --footer-text: #E5E0D7;
+    --philosophy-bg: #17231E;
+
+    --button-bg: #789487;
+    --button-text: #17231E;
+    --button-hover: #A3B5A0;
+
+    --shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* 3. GENERAL SETTINGS */
 
 * {
     margin: 0;
@@ -34,10 +105,11 @@ html {
 
 body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--cream);
-    color: var(--text);
+    background: var(--page-bg);
+    color: var(--body-color);
     line-height: 1.8;
     overflow-x: hidden;
+    transition: background 0.35s ease, color 0.35s ease;
 }
 
 a {
@@ -60,7 +132,7 @@ img {
 }
 
 
-/* 2. Navigation */
+/* 4. NAVIGATION */
 
 .navbar {
     width: 100%;
@@ -69,14 +141,15 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 25px;
-    background: rgba(248, 244, 237, 0.94);
+    gap: 20px;
+    background: var(--nav-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(128, 99, 74, 0.10);
+    border-bottom: 1px solid rgba(128, 99, 74, 0.12);
+    transition: background 0.35s ease;
 }
 
 .logo {
@@ -85,10 +158,14 @@ img {
     font-size: 27px;
     font-weight: bold;
     letter-spacing: 3px;
-    color: var(--dark-brown);
+    color: var(--heading-color);
 }
 
-.logo span {
+.logo .logo-name {
+    color: var(--heading-color);
+}
+
+.logo > span:last-child {
     color: var(--soft-brown);
 }
 
@@ -120,18 +197,25 @@ img {
 }
 
 .nav-links a:hover {
-    color: var(--dark-brown);
+    color: var(--heading-color);
 }
 
 .nav-links a:hover::after {
     width: 100%;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
 .language-btn {
     flex-shrink: 0;
     border: 1px solid var(--soft-brown);
     background: transparent;
-    color: var(--dark-brown);
+    color: var(--heading-color);
     padding: 8px 17px;
     border-radius: 30px;
     cursor: pointer;
@@ -141,12 +225,33 @@ img {
 }
 
 .language-btn:hover {
-    background: var(--dark-brown);
+    background: var(--deep-green);
     color: white;
 }
 
+.theme-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--soft-brown);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--deep-green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-/* 3. Hero Section */
+.theme-btn:hover {
+    background: var(--deep-green);
+    color: white;
+    transform: rotate(-12deg);
+}
+
+
+/* 5. HERO SECTION */
 
 .hero {
     min-height: 650px;
@@ -158,8 +263,12 @@ img {
     position: relative;
     overflow: hidden;
     background:
-        radial-gradient(circle at 85% 15%, rgba(237, 226, 211, 0.75), transparent 32%),
-        var(--cream);
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(163, 181, 160, 0.18),
+            transparent 32%
+        ),
+        var(--page-bg);
 }
 
 .hero::before {
@@ -189,7 +298,7 @@ img {
     font-family: Georgia, serif;
     font-size: clamp(42px, 5.5vw, 72px);
     line-height: 1.2;
-    color: var(--dark-brown);
+    color: var(--heading-color);
     margin-bottom: 18px;
 }
 
@@ -208,7 +317,7 @@ img {
 
 .hero-description {
     max-width: 550px;
-    color: #766456;
+    color: var(--body-color);
     font-size: 15px;
     margin-bottom: 23px;
 }
@@ -242,12 +351,13 @@ img {
 }
 
 .primary-btn {
-    background: var(--dark-brown);
-    color: white;
+    background: var(--button-bg);
+    color: var(--button-text);
 }
 
 .primary-btn:hover {
-    background: var(--brown);
+    background: var(--button-hover);
+    color: white;
     transform: translateY(-4px);
     box-shadow: var(--shadow);
 }
@@ -263,7 +373,7 @@ img {
 }
 
 
-/* 4. Hero Image */
+/* 6. HERO IMAGE */
 
 .hero-image {
     flex: 0 0 340px;
@@ -274,7 +384,7 @@ img {
     padding: 9px;
     overflow: hidden;
     border: 1px solid rgba(128, 99, 74, 0.15);
-    box-shadow: 0 20px 55px rgba(73, 55, 43, 0.13);
+    box-shadow: var(--shadow);
     animation: floatAvatar 5s ease-in-out infinite;
 }
 
@@ -286,15 +396,16 @@ img {
 }
 
 
-/* 5. General Sections */
+/* 7. GENERAL SECTIONS */
 
 .section {
     padding: 95px 11%;
     position: relative;
+    transition: background 0.35s ease;
 }
 
 .section:nth-of-type(even) {
-    background: var(--light-beige);
+    background: var(--section-bg);
 }
 
 .section-heading {
@@ -311,31 +422,31 @@ img {
 
 .section-heading h2 {
     font-family: Georgia, serif;
-    color: var(--dark-brown);
+    color: var(--heading-color);
     font-size: clamp(30px, 4vw, 43px);
     line-height: 1.3;
 }
 
 .section > p {
     max-width: 850px;
-    color: #766456;
+    color: var(--body-color);
     font-size: 15px;
 }
 
 
-/* 6. About Section */
+/* 8. ABOUT SECTION */
 
 .about-content {
     max-width: 950px;
     padding: 35px 38px;
-    background: var(--ivory);
+    background: var(--card-bg);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     border: 1px solid rgba(128, 99, 74, 0.08);
 }
 
 .about-content p {
-    color: #766456;
+    color: var(--body-color);
     font-size: 16px;
     line-height: 2.1;
 }
@@ -364,11 +475,11 @@ img {
 }
 
 
-/* 7. Education */
+/* 9. EDUCATION */
 
 .info-card {
     max-width: 800px;
-    background: var(--ivory);
+    background: var(--card-bg);
     padding: 30px;
     margin-bottom: 20px;
     border-radius: var(--radius);
@@ -383,7 +494,7 @@ img {
 
 .info-card h3 {
     font-family: Georgia, serif;
-    color: var(--dark-brown);
+    color: var(--heading-color);
     font-size: 23px;
     margin: 8px 0;
 }
@@ -399,7 +510,7 @@ img {
 }
 
 
-/* 8. Skills */
+/* 10. SKILLS */
 
 .skills-grid {
     display: grid;
@@ -411,7 +522,7 @@ img {
     min-height: 175px;
     padding: 30px 20px;
     border-radius: var(--radius);
-    background: var(--ivory);
+    background: var(--card-bg);
     text-align: center;
     box-shadow: var(--shadow);
     border: 1px solid rgba(128, 99, 74, 0.06);
@@ -420,8 +531,8 @@ img {
 
 .skill-card:hover {
     transform: translateY(-7px);
-    background: white;
-    box-shadow: 0 16px 35px rgba(73, 55, 43, 0.12);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
 }
 
 .skill-card > span {
@@ -432,7 +543,7 @@ img {
 
 .skill-card h3 {
     font-family: Georgia, serif;
-    color: var(--dark-brown);
+    color: var(--heading-color);
     font-size: 19px;
     margin-bottom: 6px;
 }
@@ -443,7 +554,7 @@ img {
 }
 
 
-/* 9. Hobbies */
+/* 11. HOBBIES */
 
 .hobbies-grid {
     display: grid;
@@ -452,7 +563,7 @@ img {
 }
 
 .hobby-card {
-    background: var(--ivory);
+    background: var(--card-bg);
     padding: 28px 17px;
     border-radius: var(--radius);
     text-align: center;
@@ -463,7 +574,7 @@ img {
 
 .hobby-card:hover {
     transform: translateY(-7px);
-    box-shadow: 0 15px 30px rgba(73, 55, 43, 0.12);
+    box-shadow: var(--shadow);
 }
 
 .hobby-icon {
@@ -472,7 +583,7 @@ img {
 }
 
 .hobby-card h3 {
-    color: var(--dark-brown);
+    color: var(--heading-color);
     font-family: Georgia, serif;
     font-size: 16px;
     margin-bottom: 8px;
@@ -484,15 +595,19 @@ img {
 }
 
 
-/* 10. Philosophy */
+/* 12. PHILOSOPHY */
 
 .philosophy-card {
     max-width: 900px;
     margin: 0 auto;
     padding: 60px 45px;
     background:
-        radial-gradient(circle at top right, rgba(182, 154, 123, 0.25), transparent 40%),
-        var(--dark-brown);
+        radial-gradient(
+            circle at top right,
+            rgba(182, 154, 123, 0.25),
+            transparent 40%
+        ),
+        var(--philosophy-bg);
     color: white;
     border-radius: 28px;
     text-align: center;
@@ -519,16 +634,16 @@ img {
 }
 
 .philosophy-card p {
-    color: var(--beige);
+    color: var(--footer-text);
     font-size: 14px;
 }
 
 
-/* 11. Projects */
+/* 13. PROJECTS */
 
 .project-card {
     max-width: 900px;
-    background: var(--ivory);
+    background: var(--card-bg);
     padding: 32px;
     border-radius: var(--radius);
     margin-bottom: 22px;
@@ -539,7 +654,7 @@ img {
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(73, 55, 43, 0.12);
+    box-shadow: var(--shadow);
 }
 
 .project-card > span {
@@ -555,26 +670,26 @@ img {
 
 .project-card h3 {
     font-family: Georgia, serif;
-    color: var(--dark-brown);
+    color: var(--heading-color);
     font-size: 23px;
     margin: 13px 0 9px;
 }
 
 .project-card p {
-    color: #766456;
+    color: var(--body-color);
     font-size: 14px;
 }
 
 
-/* 12. My Journal */
+/* 14. MY JOURNAL */
 
 .journal-section {
-    background: var(--cream);
+    background: var(--page-bg);
 }
 
 .journal-intro {
     max-width: 680px;
-    color: #766456;
+    color: var(--body-color);
     font-size: 15px;
     margin-top: -15px;
     margin-bottom: 38px;
@@ -588,7 +703,7 @@ img {
 }
 
 .journal-card {
-    background: var(--ivory);
+    background: var(--card-bg);
     border-radius: 22px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -598,7 +713,7 @@ img {
 
 .journal-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(73, 55, 43, 0.13);
+    box-shadow: var(--shadow);
 }
 
 .journal-image {
@@ -633,7 +748,7 @@ img {
     z-index: 1;
     font-family: Georgia, serif;
     font-size: 55px;
-    color: var(--dark-brown);
+    color: #49372B;
 }
 
 .journal-image-one {
@@ -661,14 +776,14 @@ img {
 
 .journal-content h3 {
     font-family: Georgia, serif;
-    color: var(--dark-brown);
+    color: var(--heading-color);
     font-size: 21px;
     line-height: 1.5;
     margin: 12px 0;
 }
 
 .journal-content p {
-    color: #766456;
+    color: var(--body-color);
     font-size: 13px;
     line-height: 1.9;
     margin-bottom: 20px;
@@ -709,7 +824,7 @@ img {
 }
 
 
-/* 13. Contact */
+/* 15. CONTACT */
 
 .contact-list {
     max-width: 700px;
@@ -721,7 +836,7 @@ img {
 
 .contact-list a {
     display: block;
-    background: var(--ivory);
+    background: var(--card-bg);
     padding: 19px 23px;
     border-radius: 14px;
     color: var(--brown);
@@ -733,23 +848,23 @@ img {
 
 .contact-list a:hover {
     background: var(--beige);
-    color: var(--dark-brown);
+    color: var(--heading-color);
     transform: translateX(5px);
 }
 
 
-/* 14. Footer */
+/* 16. FOOTER */
 
 footer {
-    background: var(--dark-brown);
-    color: var(--beige);
+    background: var(--footer-bg);
+    color: var(--footer-text);
     text-align: center;
     padding: 27px 15px;
     font-size: 12px;
 }
 
 
-/* 15. Back To Top */
+/* 17. BACK TO TOP */
 
 .back-to-top {
     position: fixed;
@@ -759,7 +874,7 @@ footer {
     height: 48px;
     border: none;
     border-radius: 50%;
-    background: var(--brown);
+    background: var(--deep-green);
     color: white;
     font-size: 24px;
     cursor: pointer;
@@ -767,12 +882,12 @@ footer {
     align-items: center;
     justify-content: center;
     z-index: 999;
-    box-shadow: 0 5px 18px rgba(73, 55, 43, 0.2);
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
 }
 
 .back-to-top:hover {
-    background: var(--dark-brown);
+    background: var(--brown);
     transform: translateY(-5px);
 }
 
@@ -781,7 +896,7 @@ footer {
 }
 
 
-/* 16. Arabic / RTL Support */
+/* 18. ARABIC / RTL SUPPORT */
 
 html[dir="rtl"] body {
     text-align: right;
@@ -818,7 +933,7 @@ html[dir="rtl"] .nav-links {
 }
 
 
-/* 17. Animations */
+/* 19. ANIMATIONS */
 
 @keyframes fadeInUp {
     from {
@@ -843,7 +958,7 @@ html[dir="rtl"] .nav-links {
 }
 
 
-/* 18. Tablet Responsive */
+/* 20. TABLET RESPONSIVE */
 
 @media (max-width: 1100px) {
 
@@ -885,7 +1000,7 @@ html[dir="rtl"] .nav-links {
 }
 
 
-/* 19. Mobile Responsive */
+/* 21. MOBILE RESPONSIVE */
 
 @media (max-width: 768px) {
 
@@ -898,6 +1013,10 @@ html[dir="rtl"] .nav-links {
 
     .logo {
         font-size: 23px;
+    }
+
+    .nav-actions {
+        margin-left: auto;
     }
 
     .language-btn {
@@ -1003,11 +1122,10 @@ html[dir="rtl"] .nav-links {
     .about-content {
         padding: 25px;
     }
-
 }
 
 
-/* 20. Small Mobile */
+/* 22. SMALL MOBILE */
 
 @media (max-width: 450px) {
 
@@ -1070,21 +1188,22 @@ html[dir="rtl"] .nav-links {
         right: auto;
         left: 18px;
     }
-
 }
 
 
-/* 21. Accessibility */
+/* 23. REDUCED MOTION ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
 
     *,
     *::before,
     *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
     }
-
 }

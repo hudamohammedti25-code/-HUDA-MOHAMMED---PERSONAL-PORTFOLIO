@@ -60,7 +60,65 @@ if (languageToggle) {
 }
 
 
-// 2. Back To Top Button
+// 2. Dark Mode Toggle
+
+const themeToggle = document.getElementById("themeToggle");
+
+function setTheme(theme) {
+
+    const isDark = theme === "dark";
+
+    // Apply selected theme
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
+
+    // Update theme button appearance
+    if (themeToggle) {
+
+        themeToggle.textContent = isDark ? "☀" : "☾";
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light mode" : "Switch to dark mode"
+        );
+
+        themeToggle.title = isDark ? "Light mode" : "Dark mode";
+
+    }
+
+    // Save theme preference
+    try {
+
+        localStorage.setItem("huda-theme", theme);
+
+    } catch (error) {
+
+        console.warn("Theme preference could not be saved.");
+
+    }
+
+}
+
+
+// Theme button event
+if (themeToggle) {
+
+    themeToggle.addEventListener("click", () => {
+
+        const currentTheme =
+            document.documentElement.dataset.theme || "light";
+
+        const newTheme = currentTheme === "dark"
+            ? "light"
+            : "dark";
+
+        setTheme(newTheme);
+
+    });
+
+}
+
+
+// 3. Back To Top Button
 
 const backToTop = document.getElementById("backToTop");
 
@@ -92,10 +150,26 @@ if (backToTop) {
 }
 
 
-// 3. Initialize Website
+// 4. Initialize Website
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Restore saved theme
+    let savedTheme = "light";
+
+    try {
+
+        savedTheme = localStorage.getItem("huda-theme") || "light";
+
+    } catch (error) {
+
+        console.warn("Saved theme could not be accessed.");
+
+    }
+
+    setTheme(savedTheme);
+
+    // Initialize language
     setLanguage(document.documentElement.lang || "en");
 
 });
