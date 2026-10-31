@@ -1,38 +1,80 @@
+// =====================================
+// 1. LANGUAGE SWITCHING
+// =====================================
+
 const languageToggle = document.getElementById('languageToggle');
 
-let currentLanguage = 'en';
+let currentLanguage = document.documentElement.lang || 'en';
 
-languageToggle.addEventListener('click', () => {
-    currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+function setLanguage(language) {
+    currentLanguage = language;
 
-    document.documentElement.lang = currentLanguage;
-    document.documentElement.dir =
-        currentLanguage === 'ar' ? 'rtl' : 'ltr';
+    // Update page direction
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.body.dir = language === 'ar' ? 'rtl' : 'ltr';
 
-    document.querySelectorAll('[data-en][data-ar]').forEach(element => {
-        element.textContent = element.getAttribute(`data-${currentLanguage}`);
+    // Translate all elements
+    const elements = document.querySelectorAll('[data-en][data-ar]');
+
+    elements.forEach(element => {
+        element.textContent = element.getAttribute(`data-${language}`);
     });
 
-    languageToggle.textContent =
-        currentLanguage === 'en' ? 'العربية' : 'English';
-});
+    // Update language button
+    if (languageToggle) {
+        languageToggle.textContent =
+            language === 'en' ? 'العربية' : 'English';
+    }
 
-// Back to Top Button
+    // Update browser tab title
+    document.title = language === 'en'
+        ? 'Huda Jameel | Personal Portfolio'
+        : 'هدى جميل | الموقع الشخصي';
+}
+
+// Language button event
+if (languageToggle) {
+    languageToggle.addEventListener('click', () => {
+        const newLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+        setLanguage(newLanguage);
+    });
+}
+
+// Set initial language
+setLanguage(currentLanguage);
+
+
+// =====================================
+// 2. BACK TO TOP BUTTON
+// =====================================
+
 const backToTopButton = document.getElementById('backToTop');
 
-// Show or hide button while scrolling
-window.addEventListener('scroll', () => {
+function updateBackToTopButton() {
+    if (!backToTopButton) return;
+
     if (window.scrollY > 300) {
         backToTopButton.classList.add('show');
     } else {
         backToTopButton.classList.remove('show');
     }
+}
+
+// Show or hide button while scrolling
+window.addEventListener('scroll', updateBackToTopButton, {
+    passive: true
 });
 
-// Scroll smoothly to the top when clicked
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+// Scroll smoothly to the top
+if (backToTopButton) {
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
+
+// Check button visibility when page loads
+updateBackToTopButton();
