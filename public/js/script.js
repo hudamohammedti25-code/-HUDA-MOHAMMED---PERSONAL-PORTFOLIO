@@ -1,80 +1,106 @@
-// =====================================
-// 1. LANGUAGE SWITCHING
-// =====================================
+// ======================================
+// HUDA JAMEEL — PERSONAL JOURNAL
+// Main JavaScript
+// ======================================
 
-const languageToggle = document.getElementById('languageToggle');
 
-let currentLanguage = document.documentElement.lang || 'en';
+// 1. Language Toggle
+
+const languageToggle = document.getElementById("languageToggle");
 
 function setLanguage(language) {
-    currentLanguage = language;
 
-    // Update page direction
+    const isArabic = language === "ar";
+
+    // Update document direction and language
     document.documentElement.lang = language;
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-    document.body.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
 
-    // Translate all elements
-    const elements = document.querySelectorAll('[data-en][data-ar]');
+    document.body.dir = isArabic ? "rtl" : "ltr";
 
-    elements.forEach(element => {
-        element.textContent = element.getAttribute(`data-${language}`);
+    // Translate all bilingual elements
+    const elements = document.querySelectorAll("[data-en][data-ar]");
+
+    elements.forEach((element) => {
+
+        element.textContent = isArabic
+            ? element.dataset.ar
+            : element.dataset.en;
+
     });
 
     // Update language button
     if (languageToggle) {
-        languageToggle.textContent =
-            language === 'en' ? 'العربية' : 'English';
+        languageToggle.textContent = isArabic ? "English" : "العربية";
     }
 
-    // Update browser tab title
-    document.title = language === 'en'
-        ? 'Huda Jameel | Personal Portfolio'
-        : 'هدى جميل | الموقع الشخصي';
+    // Update page title
+    document.title = isArabic
+        ? "هدى جميل | مدونتي الشخصية"
+        : "Huda Jameel | My Personal Journal";
+
 }
+
 
 // Language button event
 if (languageToggle) {
-    languageToggle.addEventListener('click', () => {
-        const newLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+
+    languageToggle.addEventListener("click", () => {
+
+        const currentLanguage = document.documentElement.lang;
+
+        const newLanguage = currentLanguage === "en"
+            ? "ar"
+            : "en";
+
         setLanguage(newLanguage);
+
     });
+
 }
 
-// Set initial language
-setLanguage(currentLanguage);
 
+// 2. Back To Top Button
 
-// =====================================
-// 2. BACK TO TOP BUTTON
-// =====================================
+const backToTop = document.getElementById("backToTop");
 
-const backToTopButton = document.getElementById('backToTop');
+if (backToTop) {
 
-function updateBackToTopButton() {
-    if (!backToTopButton) return;
+    window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 300) {
-        backToTopButton.classList.add('show');
-    } else {
-        backToTopButton.classList.remove('show');
-    }
-}
+        if (window.scrollY > 300) {
 
-// Show or hide button while scrolling
-window.addEventListener('scroll', updateBackToTopButton, {
-    passive: true
-});
+            backToTop.classList.add("show");
 
-// Scroll smoothly to the top
-if (backToTopButton) {
-    backToTopButton.addEventListener('click', () => {
+        } else {
+
+            backToTop.classList.remove("show");
+
+        }
+
+    });
+
+    backToTop.addEventListener("click", () => {
+
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: "smooth"
         });
+
     });
+
 }
 
-// Check button visibility when page loads
-updateBackToTopButton();
+
+// 3. Initialize Website
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    setLanguage(document.documentElement.lang || "en");
+
+});
+
+
+// ======================================
+// END OF SCRIPT
+// ======================================

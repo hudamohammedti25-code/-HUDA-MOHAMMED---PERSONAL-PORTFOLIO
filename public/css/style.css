@@ -1,33 +1,43 @@
-/* =====================================
-   HUDA MOHAMMED - PERSONAL PORTFOLIO
-   Beige & Brown Theme
-===================================== */
+/* =========================================
+   HUDA JAMEEL — PERSONAL JOURNAL
+   Editorial • Elegant • Creative
+========================================= */
 
-/* 1. Global Settings */
+/* 1. Color Palette */
+
 :root {
     --cream: #F8F4ED;
+    --ivory: #FFFCF7;
     --beige: #EDE2D3;
     --light-beige: #F1E9DE;
     --brown: #80634A;
     --dark-brown: #49372B;
     --soft-brown: #B69A7B;
+    --olive: #8A8966;
     --white: #FFFFFF;
-    --text: #49372B;
-    --shadow: 0 8px 25px rgba(73, 55, 43, 0.08);
+    --text: #5E4A3D;
+    --muted: #958476;
+    --shadow: 0 12px 35px rgba(73, 55, 43, 0.08);
+    --radius: 22px;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: var(--cream);
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--cream);
     color: var(--text);
     line-height: 1.8;
+    overflow-x: hidden;
 }
 
 a {
@@ -39,24 +49,42 @@ button {
     font-family: inherit;
 }
 
-/* 2. Navigation Bar */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+::selection {
+    background: var(--soft-brown);
+    color: white;
+}
+
+
+/* 2. Navigation */
+
 .navbar {
     width: 100%;
-    padding: 18px 7%;
+    min-height: 78px;
+    padding: 15px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(248, 244, 237, 0.95);
+    gap: 25px;
+    background: rgba(248, 244, 237, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 12px rgba(73, 55, 43, 0.05);
+    border-bottom: 1px solid rgba(128, 99, 74, 0.10);
 }
 
 .logo {
+    flex-shrink: 0;
+    font-family: Georgia, serif;
     font-size: 27px;
-    font-weight: 800;
-    letter-spacing: 2px;
+    font-weight: bold;
+    letter-spacing: 3px;
     color: var(--dark-brown);
 }
 
@@ -66,207 +94,313 @@ button {
 
 .nav-links {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    justify-content: center;
+    gap: 21px;
 }
 
 .nav-links a {
-    font-size: 14px;
+    position: relative;
+    white-space: nowrap;
+    font-size: 12px;
     font-weight: 600;
     color: var(--brown);
-    transition: 0.3s;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--soft-brown);
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--dark-brown);
 }
 
+.nav-links a:hover::after {
+    width: 100%;
+}
+
 .language-btn {
+    flex-shrink: 0;
     border: 1px solid var(--soft-brown);
     background: transparent;
     color: var(--dark-brown);
     padding: 8px 17px;
-    border-radius: 25px;
+    border-radius: 30px;
     cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s ease;
 }
 
 .language-btn:hover {
     background: var(--dark-brown);
-    color: var(--white);
+    color: white;
 }
 
+
 /* 3. Hero Section */
+
 .hero {
-    min-height: 85vh;
+    min-height: 650px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
-    padding: 90px 10%;
+    gap: 70px;
+    padding: 100px 11%;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(237, 226, 211, 0.75), transparent 32%),
+        var(--cream);
+}
+
+.hero::before {
+    content: "✦";
+    position: absolute;
+    top: 100px;
+    left: 7%;
+    color: rgba(182, 154, 123, 0.4);
+    font-size: 45px;
 }
 
 .hero-content {
     flex: 1;
+    max-width: 650px;
+    animation: fadeInUp 0.9s ease both;
 }
 
 .welcome-text {
-    color: var(--soft-brown);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    color: var(--olive);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
 }
 
 .hero h1 {
-    font-size: clamp(35px, 5vw, 55px);
-    line-height: 1.3;
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 5.5vw, 72px);
+    line-height: 1.2;
     color: var(--dark-brown);
-    margin-bottom: 12px;
+    margin-bottom: 18px;
 }
 
 .highlight {
     display: block;
     color: var(--brown);
+    font-style: italic;
 }
 
 .hero h2 {
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--soft-brown);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .hero-description {
-    max-width: 570px;
+    max-width: 550px;
     color: #766456;
-    margin-bottom: 20px;
+    font-size: 15px;
+    margin-bottom: 23px;
 }
 
 .welcome-quote {
-    max-width: 550px;
+    max-width: 520px;
+    font-family: Georgia, serif;
     font-style: italic;
+    font-size: 15px;
     color: var(--brown);
     border-left: 3px solid var(--soft-brown);
-    padding-left: 15px;
+    padding-left: 17px;
     margin-bottom: 30px;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 14px;
     flex-wrap: wrap;
 }
 
 .primary-btn,
 .secondary-btn {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 12px 24px;
     border-radius: 30px;
-    font-weight: 600;
-    transition: 0.3s;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
 .primary-btn {
     background: var(--dark-brown);
-    color: var(--white);
+    color: white;
 }
 
 .primary-btn:hover {
     background: var(--brown);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
 }
 
 .secondary-btn {
-    border: 1px solid var(--brown);
+    border: 1px solid var(--soft-brown);
     color: var(--brown);
 }
 
 .secondary-btn:hover {
     background: var(--beige);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
-/* 4. Avatar */
+
+/* 4. Hero Image */
+
 .hero-image {
-    flex: 0 0 330px;
-    width: 330px;
-    height: 380px;
-    border-radius: 48% 48% 25% 25%;
+    flex: 0 0 340px;
+    width: 340px;
+    height: 420px;
+    border-radius: 48% 48% 22% 22%;
     background: var(--beige);
+    padding: 9px;
     overflow: hidden;
-    box-shadow: var(--shadow);
-    border: 8px solid var(--white);
+    border: 1px solid rgba(128, 99, 74, 0.15);
+    box-shadow: 0 20px 55px rgba(73, 55, 43, 0.13);
+    animation: floatAvatar 5s ease-in-out infinite;
 }
 
 .hero-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: inherit;
 }
+
 
 /* 5. General Sections */
+
 .section {
-    padding: 85px 10%;
+    padding: 95px 11%;
+    position: relative;
 }
 
-.section:nth-child(even) {
+.section:nth-of-type(even) {
     background: var(--light-beige);
 }
 
 .section-heading {
-    margin-bottom: 35px;
+    margin-bottom: 38px;
 }
 
 .section-heading p {
-    color: var(--soft-brown);
-    font-size: 12px;
-    font-weight: 700;
+    color: var(--olive);
+    font-size: 11px;
+    font-weight: 800;
     letter-spacing: 3px;
+    margin-bottom: 7px;
 }
 
 .section-heading h2 {
+    font-family: Georgia, serif;
     color: var(--dark-brown);
-    font-size: 35px;
-    margin-top: 5px;
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.3;
 }
 
 .section > p {
     max-width: 850px;
     color: #766456;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-/* 6. Education Cards */
+
+/* 6. About Section */
+
+.about-content {
+    max-width: 950px;
+    padding: 35px 38px;
+    background: var(--ivory);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(128, 99, 74, 0.08);
+}
+
+.about-content p {
+    color: #766456;
+    font-size: 16px;
+    line-height: 2.1;
+}
+
+.about-note {
+    max-width: 950px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+    padding: 20px 25px;
+    background: rgba(182, 154, 123, 0.12);
+    border-radius: 14px;
+}
+
+.about-note span {
+    color: var(--olive);
+    font-size: 28px;
+}
+
+.about-note p {
+    color: var(--brown);
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+}
+
+
+/* 7. Education */
+
 .info-card {
-    background: var(--white);
-    padding: 25px;
-    margin-bottom: 18px;
-    border-radius: 15px;
+    max-width: 800px;
+    background: var(--ivory);
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: var(--radius);
     border-left: 4px solid var(--soft-brown);
     box-shadow: var(--shadow);
-    transition: 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .info-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 }
 
 .info-card h3 {
+    font-family: Georgia, serif;
     color: var(--dark-brown);
-    font-size: 19px;
+    font-size: 23px;
+    margin: 8px 0;
 }
 
 .info-card p {
     color: var(--brown);
+    font-size: 15px;
 }
 
 .info-card span {
-    color: #9A8775;
-    font-size: 13px;
+    color: var(--muted);
+    font-size: 12px;
 }
 
-/* 7. Skills */
+
+/* 8. Skills */
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -274,414 +408,93 @@ button {
 }
 
 .skill-card {
-    background: var(--white);
+    min-height: 175px;
     padding: 30px 20px;
-    border-radius: 15px;
+    border-radius: var(--radius);
+    background: var(--ivory);
     text-align: center;
     box-shadow: var(--shadow);
-    transition: 0.3s;
-}
-
-.skill-card:hover {
-    transform: translateY(-6px);
-    background: var(--beige);
-}
-
-.skill-card h3 {
-    color: var(--dark-brown);
-    font-size: 20px;
-}
-
-.skill-card p {
-    color: var(--brown);
-    font-size: 14px;
-}
-
-/* 8. Projects */
-.project-card {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--soft-brown);
-    transition: 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-}
-
-.project-card h3 {
-    color: var(--dark-brown);
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.project-card p {
-    color: #766456;
-    margin-bottom: 15px;
-}
-
-.project-card span {
-    display: inline-block;
-    background: var(--beige);
-    color: var(--brown);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-}
-
-/* 9. Contact */
-.contact-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-list a {
-    background: var(--white);
-    padding: 18px 22px;
-    border-radius: 12px;
-    color: var(--brown);
-    box-shadow: var(--shadow);
-    transition: 0.3s;
-    overflow-wrap: anywhere;
-}
-
-.contact-list a:hover {
-    background: var(--beige);
-    color: var(--dark-brown);
-    transform: translateX(5px);
-}
-
-/* 10. Footer */
-footer {
-    background: var(--dark-brown);
-    color: var(--white);
-    text-align: center;
-    padding: 25px 15px;
-    font-size: 13px;
-}
-
-/* 11. Arabic Direction */
-body[dir="rtl"] {
-    direction: rtl;
-    text-align: right;
-}
-
-body[dir="rtl"] .welcome-quote {
-    border-left: none;
-    border-right: 3px solid var(--soft-brown);
-    padding-left: 0;
-    padding-right: 15px;
-}
-
-body[dir="rtl"] .info-card,
-body[dir="rtl"] .project-card {
-    border-left: none;
-    border-right: 4px solid var(--soft-brown);
-}
-
-body[dir="rtl"] .contact-list a:hover {
-    transform: translateX(-5px);
-}
-
-/* 12. Responsive Design - Tablets */
-@media (max-width: 1000px) {
-    .navbar {
-        padding: 15px 4%;
-    }
-
-    .nav-links {
-        gap: 12px;
-    }
-
-    .hero {
-        padding: 70px 6%;
-    }
-
-    .hero-image {
-        flex-basis: 270px;
-        width: 270px;
-        height: 320px;
-    }
-
-    .section {
-        padding: 70px 7%;
-    }
-}
-
-/* 13. Responsive Design - Mobile */
-@media (max-width: 768px) {
-    .navbar {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .nav-links {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        padding: 8px 0;
-        gap: 20px;
-    }
-
-    .nav-links a {
-        white-space: nowrap;
-    }
-
-    .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding: 55px 7%;
-        gap: 35px;
-    }
-
-    .hero-image {
-        flex: none;
-        width: 240px;
-        height: 280px;
-    }
-
-    .hero-description,
-    .welcome-quote {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .welcome-quote {
-        text-align: left;
-    }
-
-    body[dir="rtl"] .welcome-quote {
-        text-align: right;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .section {
-        padding: 60px 7%;
-    }
-
-    .section-heading h2 {
-        font-size: 29px;
-    }
-}
-
-/* 14. Small Mobile */
-@media (max-width: 450px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-        font-size: 34px;
-    }
-
-    .hero-image {
-        width: 210px;
-        height: 250px;
-    }
-
-    .logo {
-        font-size: 22px;
-    }
-}
-
-/* ==============================
-   Smooth Animations
-============================== */
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Hero entrance animation */
-.hero {
-    animation: fadeInUp 1s ease both;
-}
-
-/* Section entrance animation */
-section {
-    animation: fadeInUp 0.8s ease both;
-}
-
-/* Avatar floating effect */
-.avatar,
-.hero img {
-    animation: floatAvatar 4s ease-in-out infinite;
-}
-
-/* Cards hover effect */
-.card,
-.skill-card,
-.project-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover,
-.skill-card:hover,
-.project-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 12px 25px rgba(73, 55, 43, 0.12);
-}
-
-/* Navigation hover effect */
-nav a {
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--soft-brown);
-}
-
-/* Button hover effect */
-button,
-.btn {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-button:hover,
-.btn:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
-}
-
-/* Animation keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes floatAvatar {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-/* Accessibility: reduce motion */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 48px;
-    height: 48px;
-    border: none;
-    border-radius: 50%;
-    background: var(--brown);
-    color: white;
-    font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    box-shadow: 0 5px 15px rgba(73, 55, 43, 0.2);
+    border: 1px solid rgba(128, 99, 74, 0.06);
     transition: all 0.3s ease;
 }
 
-.back-to-top:hover {
-    background: var(--dark-brown);
-    transform: translateY(-5px);
+.skill-card:hover {
+    transform: translateY(-7px);
+    background: white;
+    box-shadow: 0 16px 35px rgba(73, 55, 43, 0.12);
 }
 
-.back-to-top.show {
-    display: flex;
+.skill-card > span {
+    display: block;
+    font-size: 31px;
+    margin-bottom: 12px;
 }
 
-/* Mobile positioning */
-@media (max-width: 600px) {
-    .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 42px;
-        height: 42px;
-    }
+.skill-card h3 {
+    font-family: Georgia, serif;
+    color: var(--dark-brown);
+    font-size: 19px;
+    margin-bottom: 6px;
 }
 
-/* =====================================
-   15. HOBBIES SECTION
-===================================== */
+.skill-card p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* 9. Hobbies */
 
 .hobbies-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+    gap: 20px;
 }
 
 .hobby-card {
-    background: var(--white);
-    padding: 28px 18px;
-    border-radius: 18px;
+    background: var(--ivory);
+    padding: 28px 17px;
+    border-radius: var(--radius);
     text-align: center;
     box-shadow: var(--shadow);
     border-bottom: 3px solid var(--soft-brown);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .hobby-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(73, 55, 43, 0.12);
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(73, 55, 43, 0.12);
 }
 
 .hobby-icon {
-    font-size: 35px;
-    margin-bottom: 12px;
+    font-size: 34px;
+    margin-bottom: 13px;
 }
 
 .hobby-card h3 {
     color: var(--dark-brown);
-    font-size: 17px;
+    font-family: Georgia, serif;
+    font-size: 16px;
     margin-bottom: 8px;
 }
 
 .hobby-card p {
-    color: #766456;
-    font-size: 13px;
+    color: var(--muted);
+    font-size: 12px;
 }
 
 
-/* =====================================
-   16. PHILOSOPHY SECTION
-===================================== */
+/* 10. Philosophy */
 
 .philosophy-card {
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 55px 40px;
-    background: var(--dark-brown);
-    color: var(--white);
-    border-radius: 22px;
+    padding: 60px 45px;
+    background:
+        radial-gradient(circle at top right, rgba(182, 154, 123, 0.25), transparent 40%),
+        var(--dark-brown);
+    color: white;
+    border-radius: 28px;
     text-align: center;
     box-shadow: var(--shadow);
     position: relative;
@@ -697,78 +510,581 @@ button:hover,
 }
 
 .philosophy-card h3 {
-    font-size: clamp(21px, 3vw, 29px);
+    font-family: Georgia, serif;
+    font-size: clamp(22px, 3vw, 31px);
     line-height: 1.7;
     margin: 15px auto 20px;
-    max-width: 700px;
-    color: var(--white);
+    max-width: 720px;
+    color: white;
 }
 
 .philosophy-card p {
     color: var(--beige);
+    font-size: 14px;
+}
+
+
+/* 11. Projects */
+
+.project-card {
+    max-width: 900px;
+    background: var(--ivory);
+    padding: 32px;
+    border-radius: var(--radius);
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--soft-brown);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(73, 55, 43, 0.12);
+}
+
+.project-card > span {
+    display: inline-block;
+    background: var(--beige);
+    color: var(--brown);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.project-card h3 {
+    font-family: Georgia, serif;
+    color: var(--dark-brown);
+    font-size: 23px;
+    margin: 13px 0 9px;
+}
+
+.project-card p {
+    color: #766456;
+    font-size: 14px;
+}
+
+
+/* 12. My Journal */
+
+.journal-section {
+    background: var(--cream);
+}
+
+.journal-intro {
+    max-width: 680px;
+    color: #766456;
+    font-size: 15px;
+    margin-top: -15px;
+    margin-bottom: 38px;
+}
+
+.journal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    align-items: stretch;
+}
+
+.journal-card {
+    background: var(--ivory);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(128, 99, 74, 0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.journal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(73, 55, 43, 0.13);
+}
+
+.journal-image {
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.journal-image::before,
+.journal-image::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(73, 55, 43, 0.13);
+}
+
+.journal-image::before {
+    width: 170px;
+    height: 170px;
+}
+
+.journal-image::after {
+    width: 125px;
+    height: 125px;
+}
+
+.journal-image span {
+    position: relative;
+    z-index: 1;
+    font-family: Georgia, serif;
+    font-size: 55px;
+    color: var(--dark-brown);
+}
+
+.journal-image-one {
+    background: linear-gradient(135deg, #E8D8C5, #C5AE92);
+}
+
+.journal-image-two {
+    background: linear-gradient(135deg, #E5DED0, #B8B394);
+}
+
+.journal-image-three {
+    background: linear-gradient(135deg, #DCD5CB, #B7A99A);
+}
+
+.journal-content {
+    padding: 25px;
+}
+
+.journal-category {
+    color: var(--olive);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.journal-content h3 {
+    font-family: Georgia, serif;
+    color: var(--dark-brown);
+    font-size: 21px;
+    line-height: 1.5;
+    margin: 12px 0;
+}
+
+.journal-content p {
+    color: #766456;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.journal-status {
+    display: inline-block;
+    color: var(--brown);
+    background: var(--beige);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.journal-note {
+    margin: 45px auto 0;
+    text-align: center;
+    max-width: 650px;
+    padding: 28px;
+    border-top: 1px solid rgba(128, 99, 74, 0.2);
+}
+
+.journal-note p {
+    color: var(--brown);
+    font-family: Georgia, serif;
+    font-style: italic;
     font-size: 15px;
 }
 
+.journal-note span {
+    display: block;
+    color: var(--olive);
+    font-family: Georgia, serif;
+    margin-top: 12px;
+    font-size: 14px;
+}
 
-/* =====================================
-   17. ARABIC SUPPORT
-===================================== */
 
-html[dir="rtl"] .hobby-card,
-html[dir="rtl"] .philosophy-card {
+/* 13. Contact */
+
+.contact-list {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.contact-list a {
+    display: block;
+    background: var(--ivory);
+    padding: 19px 23px;
+    border-radius: 14px;
+    color: var(--brown);
+    font-size: 13px;
+    box-shadow: var(--shadow);
+    overflow-wrap: anywhere;
+    transition: all 0.3s ease;
+}
+
+.contact-list a:hover {
+    background: var(--beige);
+    color: var(--dark-brown);
+    transform: translateX(5px);
+}
+
+
+/* 14. Footer */
+
+footer {
+    background: var(--dark-brown);
+    color: var(--beige);
+    text-align: center;
+    padding: 27px 15px;
+    font-size: 12px;
+}
+
+
+/* 15. Back To Top */
+
+.back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: var(--brown);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 5px 18px rgba(73, 55, 43, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background: var(--dark-brown);
+    transform: translateY(-5px);
+}
+
+.back-to-top.show {
+    display: flex;
+}
+
+
+/* 16. Arabic / RTL Support */
+
+html[dir="rtl"] body {
+    text-align: right;
+}
+
+html[dir="rtl"] .welcome-quote {
+    border-left: none;
+    border-right: 3px solid var(--soft-brown);
+    padding-left: 0;
+    padding-right: 17px;
+}
+
+html[dir="rtl"] .info-card,
+html[dir="rtl"] .project-card {
+    border-left: none;
+    border-right: 4px solid var(--soft-brown);
+}
+
+html[dir="rtl"] .contact-list a:hover {
+    transform: translateX(-5px);
+}
+
+html[dir="rtl"] .about-note {
     direction: rtl;
 }
 
-html[dir="rtl"] .philosophy-card h3,
-html[dir="rtl"] .philosophy-card p {
-    text-align: center;
+html[dir="rtl"] .back-to-top {
+    right: auto;
+    left: 28px;
+}
+
+html[dir="rtl"] .nav-links {
+    direction: rtl;
 }
 
 
-/* =====================================
-   18. TABLET RESPONSIVE DESIGN
-===================================== */
+/* 17. Animations */
 
-@media (max-width: 1000px) {
-    .hobbies-grid {
-        grid-template-columns: repeat(3, 1fr);
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatAvatar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
     }
 }
 
 
-/* =====================================
-   19. MOBILE RESPONSIVE DESIGN
-===================================== */
+/* 18. Tablet Responsive */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+        padding: 15px 4%;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 80px 7%;
+        gap: 40px;
+    }
+
+    .hero-image {
+        flex-basis: 290px;
+        width: 290px;
+        height: 360px;
+    }
+
+    .section {
+        padding: 80px 7%;
+    }
+
+    .hobbies-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .journal-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* 19. Mobile Responsive */
 
 @media (max-width: 768px) {
+
+    .navbar {
+        min-height: auto;
+        flex-wrap: wrap;
+        padding: 14px 5%;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .language-btn {
+        padding: 7px 13px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 9px 2px;
+        gap: 22px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--soft-brown) transparent;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: auto;
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 65px 7%;
+        gap: 35px;
+    }
+
+    .hero::before {
+        left: 5%;
+        top: 30px;
+        font-size: 30px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 9vw, 53px);
+    }
+
+    .hero h2 {
+        font-size: 15px;
+    }
+
+    .hero-description,
+    .welcome-quote {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .welcome-quote {
+        text-align: left;
+    }
+
+    html[dir="rtl"] .welcome-quote {
+        text-align: right;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        flex: none;
+        width: 245px;
+        height: 300px;
+    }
+
+    .section {
+        padding: 65px 7%;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .hobbies-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
-    .hobby-card {
-        padding: 23px 14px;
+    .journal-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
     }
 
-    .hobby-card h3 {
-        font-size: 15px;
+    .journal-image {
+        height: 190px;
     }
 
     .philosophy-card {
-        padding: 40px 22px;
+        padding: 42px 24px;
     }
+
+    .about-content {
+        padding: 25px;
+    }
+
 }
 
+
+/* 20. Small Mobile */
+
 @media (max-width: 450px) {
+
+    .hero-image {
+        width: 215px;
+        height: 265px;
+    }
+
+    .hero h1 {
+        font-size: 37px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons a {
+        text-align: center;
+    }
+
+    .skills-grid,
     .hobbies-grid {
         grid-template-columns: 1fr;
     }
 
-    .philosophy-card {
-        padding: 35px 18px;
+    .section-heading h2 {
+        font-size: 28px;
     }
 
-    .philosophy-card h3 {
-        font-size: 20px;
+    .about-content {
+        padding: 21px;
     }
+
+    .about-content p {
+        font-size: 14px;
+    }
+
+    .info-card,
+    .project-card {
+        padding: 23px;
+    }
+
+    .philosophy-card {
+        padding: 35px 19px;
+    }
+
+    .journal-content {
+        padding: 21px;
+    }
+
+    .back-to-top {
+        bottom: 18px;
+        right: 18px;
+        width: 43px;
+        height: 43px;
+    }
+
+    html[dir="rtl"] .back-to-top {
+        right: auto;
+        left: 18px;
+    }
+
+}
+
+
+/* 21. Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
 }
